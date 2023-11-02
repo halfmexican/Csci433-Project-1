@@ -1,12 +1,11 @@
 #include "sorting_algorithms.h"
 #include <stdlib.h> 
-
 // Helper function to merge two sorted sub-arrays
 void merge(double *a, size_t p, size_t q, size_t r) {
     size_t n1 = q - p + 1;
     size_t n2 = r - q;
 
-    // Create temporary arrays L and R of type double
+    // Create temporary arrays
     double *L = (double*)malloc(n1 * sizeof(double));
     double *R = (double*)malloc(n2 * sizeof(double));
 
@@ -30,7 +29,6 @@ void merge(double *a, size_t p, size_t q, size_t r) {
         k++;
     }
 
-    // Copy remaining elements if any
     while (i < n1) {
         a[k] = L[i];
         i++;
@@ -42,7 +40,6 @@ void merge(double *a, size_t p, size_t q, size_t r) {
         k++;
     }
 
-    // Free temporary arrays
     free(L);
     free(R);
 }
@@ -57,6 +54,7 @@ void merge_sort_recursive(double *a, size_t p, size_t r) {
     }
 }
 
+// Merge sort function
 void merge_sort(double *a, const size_t n) {
     merge_sort_recursive(a, 0, n - 1);
 }
